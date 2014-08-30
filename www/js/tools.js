@@ -46,6 +46,7 @@ function Parser()
             console.log("function get");
 
 
+
             _self.gen(xml, "actions70");
             _self.gen(xml, "actions20");
             _self.gen(xml, "actions10");

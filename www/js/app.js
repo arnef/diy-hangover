@@ -7,6 +7,5 @@
 (function () {
     var app = angular.module('diy-hangover', []);
     
-    var game = new Game(null, null, null, null);
-    game.next();
+   var parser = new Parser();
 })();

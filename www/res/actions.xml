@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <all-actions>
-    <actions chance="70">
+    <actions70>
         <action>
             <name>Rechts muss trinken!</name>
             <tooltip></tooltip>
@@ -77,9 +77,9 @@
             <name>Du darfst dir zwei Personen aussuchen, die ihre Mischen tauschen müssen!</name>
             <tooltip></tooltip>
         </action>
-    </actions>
+    </actions70>
 
-    <actions chance="20">
+    <actions20>
         <action>
             <name>Suche dir einen Trinkpartner aus !</name>
             <tooltip>Sobald man in einem Team mit jemandem ist, muss wenn jemand aus dem Team trinken muss , jedes Teammitglied die gleiche menge an Schlucken nehmen. Sollte man dazu gezwungen sein ein Team aus mehr als 3 Spielern zu bilden , darf man einen Spieler entfernen, so das maximal 3 Spieler zusammen im Team sind.</tooltip>
@@ -120,8 +120,8 @@
             <name>Es darf nichtmehr aufs Handy geguckt werden!</name>
             <tooltip>Wer auf sein Handy guckt, muss Trinken. (Ausser natürlich der Spieler der diese App auf seinem Handy hat, sollte er die App beenden bzw in den Hintergrund verschieben gilt diese Regel auch für ihn.)</tooltip>
         </action>
-    </actions>
-    <actions chance="10">
+    </actions20>
+    <actions10>
         <action>
             <name>Solltest du Graß haben -> Baue einen</name>
             <tooltip></tooltip>
@@ -142,5 +142,5 @@
             <name>Fülle die Teufelsmische um 1/4 auf !</name>
             <tooltip>Stellt ein Leeres Glas in die mitte und jedesmal wenn diese Aktion kommt, muss der Aktive Spieler das Glas um ein viertel auffüllen. Der vierte Spieler der diese Aktion bekommt muss das Glas austrinken.</tooltip>
         </action>
-    </actions>
+    </actions10>
 </all-actions>

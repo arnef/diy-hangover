@@ -26,6 +26,7 @@ function Rule(withPlayer) {
     this.withPlayer = withPlayer;
     this.active = false;
     this.visible = false;
+    
     this.increateCounting = function() {
         this.counting++;
     };

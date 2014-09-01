@@ -37,40 +37,48 @@ function Rule(withPlayer) {
 }
 
 function Game(users, actions70, actions20, actions10) {
-    this.users = users;
-    this.actions70 = actions70;
-    this.actions20 = actions20;
-    this.actions10 = actions10;
-    this.activeRules;
-    this.currentPlayer = -1;
-    this.currentAction = null;
-
-    this.next = function() {
+    var _self  = this;
+    _self.users = users;
+    _self.actions70 = actions70;
+    _self.actions20 = actions20;
+    _self.actions10 = actions10;
+    _self.activeRules;
+    _self.currentPlayer = -1;
+    _self.currentAction = null;
+    
+    _self.next = function() {
         var random = Math.floor(Math.random() * 99);
         var next = 0;
         if (random < 10) {
-            next = Math.floor(Math.random() * (this.actions10.length - 1));
-            this.currentAction = this.actions10[next];
+            next = Math.floor(Math.random() * (_self.actions10.length - 1));
+            _self.currentAction = _self.actions10[next];
         }
         else if (random < 30) {
-            next = Math.floor(Math.random() * (this.actions20.length - 1));
-            this.currentAction = this.actions20[next];
+            next = Math.floor(Math.random() * (_self.actions20.length - 1));
+            _self.currentAction = _self.actions20[next];
         }
         else {
-            next = Math.floor(Math.random() * (this.actions70.length - 1));
-            this.currentAction = this.actions70[next];
+            next = Math.floor(Math.random() * (_self.actions70.length - 1));
+            _self.currentAction = _self.actions70[next];
         }
 
-        this.currentPlayer = (++this.currentPlayer) % (this.users.length);
+        _self.currentPlayer = (++_self.currentPlayer) % (_self.users.length);
 
-        if (typeof this.currentAction === Rule) {
-            if (this.currentAction.withPlayer) {
-                this.currentAction.user = this.users[this.currentPlayer];
+        if (typeof _self.currentAction === Rule) {
+            if (_self.currentAction.withPlayer) {
+                _self.currentAction.user = _self.users[_self.currentPlayer];
 
             }
             else {
                 //TODO alte regeln löschen
             }
         }
+        console.log('currentAction ' + _self.currentAction.name);
     };
+    
+    _self.getCurrentPlayer = function () {
+        return _self.users[_self.currentPlayer];
+    };
+    
+    _self.next();
 }

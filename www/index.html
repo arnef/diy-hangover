@@ -22,7 +22,10 @@ and open the template in the editor.
     </head>
     <body>
         <div ng-controller="GameController as gameCtrl">
-            {{ currentAction }}
+            <p>{{ gameCtrl.game.getCurrentPlayer() }}</p>
+            <p>{{ gameCtrl.game.currentAction.name }}</p>
+            <p><a href ng-click="gameCtrl.game.next()">Next</a></p>
+            <a href ng-show="gameCtrl.game.currentAction.hasTooltip()">Tooltip</a>
         </div>
     </body>
 </html>

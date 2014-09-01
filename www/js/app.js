@@ -14,17 +14,14 @@
         _self.actions70 = [];
         _self.actions20 = [];
         _self.actions10 = [];
-
-
-        $scope.currentAction = "Test";
-
+        _self.game = null;
+        
+        
         $scope.setActions = function(actions70, actions20, actions10) {
             _self.actions70 = actions70;
             _self.actions20 = actions20;
             _self.actions10 = actions10;
-            
-            $scope.currentAction = _self.actions70[0].name; // just for testing
-            
+            _self.initGame();
             $scope.$apply();
             console.log("Loading actions done");
         };
@@ -34,6 +31,11 @@
             var parser = new Parser();
             parser.getAction($scope.setActions);
         };
+        
+        _self.initGame = function() {
+            _self.game = new Game(["arne", "an3"], _self.actions70, _self.actions20, _self.actions10);
+        };
+        
         
         $scope.getActions();
 

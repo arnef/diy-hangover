@@ -39,10 +39,26 @@ function Parser()
             _self.gen(xml, "actions70", _self.actions70);
             _self.gen(xml, "actions20", _self.actions20);
             _self.gen(xml, "actions10", _self.actions10);
+            return true;
+        });
+        
+    };
+//    console.log(this.init());
+    
+    this.getAction = function (callback) {
+        $.get("res/actions.xml", {}, function(xml) {
+            _self.gen(xml, "actions70", _self.actions70);
+            _self.gen(xml, "actions20", _self.actions20);
+            _self.gen(xml, "actions10", _self.actions10);
+            callback(_self.actions70, _self.actions20, _self.actions10);
         });
     };
-    this.init();
-    console.log("parser done");
-    console.log("actions20 length: " + _self.actions20.length);
+//    _self.getActions = function (actions70, actions20, actions10) {
+//         $.get("res/actions.xml", {}, function(xml) {
+//            _self.gen(xml, "actions70", actions70);
+//            _self.gen(xml, "actions20", actions20);
+//            _self.gen(xml, "actions10", actions10);
+//        });   
+//    };
 }
 

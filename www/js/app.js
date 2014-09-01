@@ -7,5 +7,21 @@
 (function () {
     var app = angular.module('diy-hangover', []);
     
-   var parser = new Parser();
+    
+    
+    app.controller('GameController', function($scope) {
+        var _self = this;
+        var parser = new Parser();
+        console.log(parser.actions20);
+        var bla = parser.actions20.length;
+        
+        console.log(bla);
+        
+        _self.first = bla;
+        
+        $scope.setFirst = function (newFirst) {
+            _self.first = newFirst;
+        }
+        
+    });
 })();

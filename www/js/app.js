@@ -5,8 +5,19 @@
  */
 
 (function() {
-    var app = angular.module('diy-hangover', []);
+    var app = angular.module('diy-hangover', ['ngRoute']);
 
+    app.config(function($routeProvider) {
+      $routeProvider
+        .when('/', {
+            templateUrl: 'pages/player.html'
+      })
+        .when('/game', {
+          templateUrl: 'pages/game.html',
+          controller: 'GameController',
+          controllerAs: 'gameCtrl'
+        });
+    });
 
 
     app.controller('GameController', function($scope) {
@@ -21,6 +32,7 @@
             _self.actions70 = actions70;
             _self.actions20 = actions20;
             _self.actions10 = actions10;
+            console.log(_self.actions20);
             _self.initGame();
             $scope.$apply();
             console.log("Loading actions done");

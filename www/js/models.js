@@ -5,6 +5,7 @@
  */
 
 function Action() {
+    this.type = 'Action';
     this.name;
     this.tooltip;
     this.counting;
@@ -19,6 +20,7 @@ function Action() {
 }
 
 function Rule(withPlayer) {
+    this.type = 'Rule';
     this.name;
     this.tooltip;
     this.counting;
@@ -26,7 +28,7 @@ function Rule(withPlayer) {
     this.withPlayer = withPlayer;
     this.active = false;
     this.visible = false;
-    
+
     this.increateCounting = function() {
         this.counting++;
     };
@@ -37,15 +39,20 @@ function Rule(withPlayer) {
 }
 
 function Game(users, actions70, actions20, actions10) {
-    var _self  = this;
+    var _self = this;
     _self.users = users;
     _self.actions70 = actions70;
     _self.actions20 = actions20;
     _self.actions10 = actions10;
-    _self.activeRules;
+    _self.activeRules = [];
     _self.currentPlayer = -1;
     _self.currentAction = null;
-    
+
+    /**
+     * will choose the next action randomly and set the next player
+     * 
+     * @returns {undefined}
+     */
     _self.next = function() {
         var random = Math.floor(Math.random() * 99);
         var next = 0;
@@ -63,22 +70,63 @@ function Game(users, actions70, actions20, actions10) {
         }
 
         _self.currentPlayer = (++_self.currentPlayer) % (_self.users.length);
-
-        if (typeof _self.currentAction === Rule) {
-            if (_self.currentAction.withPlayer) {
-                _self.currentAction.user = _self.users[_self.currentPlayer];
-
+        if (_self.currentAction.type === 'Rule') {
+            
+            var index = $.inArray(_self.currentAction, _self.activeRules);
+            if (index === -1) {
+                _self.addRule(_self.currentAction);
             }
             else {
-                //TODO alte regeln löschen
+                _self.removeRule(_self.currentAction, index);
             }
         }
-        console.log('currentAction ' + _self.currentAction.name);
+    };
+
+    /**
+     * adds a rule to the actives, if the rule is for a particular player,
+     * this player will be set.
+     * 
+     * @param {Rule} rule 
+     * @returns {undefined}
+     */
+    _self.addRule = function (rule) {
+        if (rule.withPlayer) {
+            rule.user = _self.getCurrentPlayer();
+        }
+        _self.activeRules.push(rule);
     };
     
-    _self.getCurrentPlayer = function () {
+    /**
+     * removes a rule from the actives, if the rule is for a particular player,
+     * the new player will be set. otherwise the rule will be deleted. 
+     * 
+     * @param {Rule} rule
+     * @param {Number} index of rule in array
+     * @returns {undefined}
+     */
+    _self.removeRule = function (rule, index) {
+        if (rule.withPlayer) {
+            if (rule.user === _self.getCurrentPlayer()) {
+                rule.user = "";
+                _self.activeRules.splice(index, 1);
+            }
+            else {
+                rule.user = _self.getCurrentPlayer();
+            }
+        }
+        else {
+            _self.activeRules.splice(index,1);
+        }
+    };
+
+    /**
+     * returns the current player
+     * 
+     * @returns {String}
+     */
+    _self.getCurrentPlayer = function() {
         return _self.users[_self.currentPlayer];
     };
-    
+
     _self.next();
 }

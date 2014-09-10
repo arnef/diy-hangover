@@ -5,8 +5,8 @@
  */
 
 (function() {
-    var app = angular.module('diy-hangover', ['ngRoute']);
-    
+    var app = angular.module('diy-hangover', ['ngRoute', 'ngTouch']);
+    var gameScope = null;
     
     app.config(function($routeProvider) {
       $routeProvider
@@ -23,6 +23,7 @@
     });
 
     app.controller('AppController', function($scope) {
+       gameScope = $scope;
        $scope.APP_NAME = 'DIY-Hangover'; 
        $scope.players = [];
     });
@@ -55,10 +56,12 @@
         _self.initGame = function() {
             _self.game = new Game($scope.players, _self.actions70, _self.actions20, _self.actions10);
         };
-        
-        
-        $scope.getActions();
 
+        _self.nextAction = function() {
+            _self.game.next();
+        };
+        $scope.getActions();
+        
     });
     
     app.controller('PlayerController', function($scope) {
@@ -77,4 +80,8 @@
             $scope.players.splice(index,1);
         };
     });
+    
+    
 })();
+
+

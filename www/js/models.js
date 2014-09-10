@@ -54,6 +54,7 @@ function Game(users, actions70, actions20, actions10) {
      * @returns {undefined}
      */
     _self.next = function() {
+        console.log('game.next()');
         var random = Math.floor(Math.random() * 99);
         var next = 0;
         if (random < 10) {

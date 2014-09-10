@@ -15,12 +15,12 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="jumbotron" >
+<div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()">
     <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right" ng-show="gameCtrl.game.currentAction.hasTooltip()">?</button></p>
     <h2 style="text-align: left">{{ gameCtrl.game.getCurrentPlayer()}}</h2>
 
     <p class="lead">{{ gameCtrl.game.currentAction.name}}</p>
-    <p><a href class="btn btn-lg btn-default" ng-click="gameCtrl.game.next()">Next</a></p>
+    <p class="visible-md"><a href class="btn btn-lg btn-default" ng-click="gameCtrl.nextAction()">Next</a></p>
 
 </div>
 <div ng-repeat="rule in gameCtrl.game.activeRules">

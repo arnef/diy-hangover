@@ -4,9 +4,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html ng-app="diy-hangover">
+<html ng-app="diy-hangover" ng-controller="AppController">
     <head>
-        <title>DIY-Hangoverb</title>
+        <title>{{ APP_NAME }}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,7 +30,7 @@ and open the template in the editor.
                     <li><a href="#game">Game</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-                <h3 class="text-muted">DIY - Hangover</h3>
+                <h3 class="text-muted">{{ APP_NAME }}</h3>
             </div>
 
             <div ng-view>

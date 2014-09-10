@@ -6,11 +6,14 @@
 
 (function() {
     var app = angular.module('diy-hangover', ['ngRoute']);
-
+    
+    
     app.config(function($routeProvider) {
       $routeProvider
         .when('/', {
-            templateUrl: 'pages/player.html'
+            templateUrl: 'pages/player.html',
+            controller: 'PlayerController',
+            controllerAs: 'playerCtrl'
       })
         .when('/game', {
           templateUrl: 'pages/game.html',
@@ -19,8 +22,13 @@
         });
     });
 
+    app.controller('AppController', function($scope) {
+       $scope.APP_NAME = 'DIY-Hangover'; 
+       $scope.players = [];
+    });
 
     app.controller('GameController', function($scope) {
+        
         var _self = this;
         _self.actions70 = [];
         _self.actions20 = [];
@@ -45,11 +53,28 @@
         };
         
         _self.initGame = function() {
-            _self.game = new Game(["arne", "an3"], _self.actions70, _self.actions20, _self.actions10);
+            _self.game = new Game($scope.players, _self.actions70, _self.actions20, _self.actions10);
         };
         
         
         $scope.getActions();
 
+    });
+    
+    app.controller('PlayerController', function($scope) {
+        
+        var _self = this;
+        _self.newplayer = "";
+        
+        _self.addPlayer = function () {
+            if (_self.newplayer !== "") {
+                $scope.players.push(_self.newplayer);
+                _self.newplayer = "";
+            }
+        };
+        
+        _self.removePlayer = function (index) {
+            $scope.players.splice(index,1);
+        };
     });
 })();

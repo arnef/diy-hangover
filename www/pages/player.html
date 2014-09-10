@@ -1,10 +1,17 @@
 <h1>Player</h1>
 <h2>
-    {{ newuser}}
+    <p ng-repeat="(pIndex, player) in players">
+        {{ player }} <button ng-click="playerCtrl.removePlayer(pIndex)" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></button>
+    </p>
+    <p>
+    {{ playerCtrl.newplayer }}
+    </p>
 </h2>
-<form class="form-inline">
-<div class="form-group">
-    <input ng-model="newuser" type="text" class="form-control">
+<form class="form-inline" name="playerForm" ng-submit="playerCtrl.addPlayer()">
+<div class="form-group">  
+    <input ng-model="playerCtrl.newplayer" type="text" class="form-control">
     <input type="submit" value="Hinzufügen" class="form-control">
 </div>
 </form>
+<hr>
+<a href="#game" class="btn btn-block btn-primary">Start Game</a>

@@ -59,6 +59,10 @@
             _self.game.next();
         };
 
+        _self.showRules = function() {
+            $('#rulesModal').modal('toggle');
+        };
+        
         $scope.getActions();
 
     });

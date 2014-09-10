@@ -15,7 +15,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()">
+<div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()" w-mousetrap="{space: gameCtrl.nextAction, right: gameCtrl.nextAction}">
     <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right" ng-show="gameCtrl.game.currentAction.hasTooltip()">?</button></p>
     <h2 style="text-align: left">{{ gameCtrl.game.getCurrentPlayer()}}</h2>
 

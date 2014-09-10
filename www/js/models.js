@@ -38,13 +38,13 @@ function Rule(withPlayer) {
     };
 }
 
-function Game(users, actions70, actions20, actions10) {
+function Game(users, actions70, actions20, actions10, activeRules) {
     var _self = this;
     _self.users = users;
     _self.actions70 = actions70;
     _self.actions20 = actions20;
     _self.actions10 = actions10;
-    _self.activeRules = [];
+    _self.activeRules = activeRules;
     _self.currentPlayer = -1;
     _self.currentAction = null;
 
@@ -54,7 +54,6 @@ function Game(users, actions70, actions20, actions10) {
      * @returns {undefined}
      */
     _self.next = function() {
-        console.log('game.next()');
         var random = Math.floor(Math.random() * 99);
         var next = 0;
         if (random < 10) {
@@ -72,8 +71,7 @@ function Game(users, actions70, actions20, actions10) {
 
         _self.currentPlayer = (++_self.currentPlayer) % (_self.users.length);
         if (_self.currentAction.type === 'Rule') {
-            
-            var index = $.inArray(_self.currentAction, _self.activeRules);
+            var index = _self.isRuleActive(_self.currentAction);
             if (index === -1) {
                 _self.addRule(_self.currentAction);
             }
@@ -81,6 +79,16 @@ function Game(users, actions70, actions20, actions10) {
                 _self.removeRule(_self.currentAction, index);
             }
         }
+    };
+
+    _self.isRuleActive = function (rule) {
+        for (var i = 0; i < _self.activeRules.length; i++) {
+            var comRule = _self.activeRules[i];
+            if (comRule.name === rule.name) {
+                return i;
+            }
+        }
+        return -1;
     };
 
     /**
@@ -128,6 +136,6 @@ function Game(users, actions70, actions20, actions10) {
     _self.getCurrentPlayer = function() {
         return _self.users[_self.currentPlayer];
     };
-
+    
     _self.next();
 }

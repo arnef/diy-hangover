@@ -35,12 +35,12 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()" w-mousetrap="{right: gameCtrl.nextAction, r: gameCtrl.showRules}">
+<div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()" w-mousetrap="{right: gameCtrl.nextAction, n:gameCtrl.nextAction, r: gameCtrl.showRules, ?: gameCtrl.showTooltip}">
     <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right" ng-show="gameCtrl.game.currentAction.hasTooltip()">?</button></p>
     <h2 style="text-align: left">{{ gameCtrl.game.getCurrentPlayer()}}</h2>
 
     <p class="lead">{{ gameCtrl.game.currentAction.name}}</p>
-    <p class="visible-md"><a href class="btn btn-lg btn-default" ng-click="gameCtrl.nextAction()">Next</a></p>
+    <p class="visible-md"><button class="btn btn-lg btn-default" ng-click="gameCtrl.nextAction()"><u>N</u>ext</button></p>
 
 </div>
-<button data-toggle="modal" data-target="#rulesModal" class="btn btn-default">Aktive Regeln</button>
+<button data-toggle="modal" data-target="#rulesModal" class="btn btn-default">Aktive <u>R</u>egeln</button>

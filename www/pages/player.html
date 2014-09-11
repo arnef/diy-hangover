@@ -1,17 +1,31 @@
-<h1>Player</h1>
-<h2>
-    <p ng-repeat="(pIndex, player) in players">
-        {{ player }} <button ng-click="playerCtrl.removePlayer(pIndex)" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></button>
-    </p>
-    <p>
-    {{ playerCtrl.newplayer }}
-    </p>
-</h2>
-<form class="form-inline" name="playerForm" ng-submit="playerCtrl.addPlayer()">
-<div class="form-group">  
-    <input ng-model="playerCtrl.newplayer" type="text" class="form-control">
-    <input type="submit" value="Hinzufügen" class="form-control">
+<div class="row">
+    <div class="col-md-12">
+        
+        <h1>
+            Spieler
+            <button ng-show="playerCtrl.hasPlayers()" ng-click="playerCtrl.removePlayers()" class="btn btn-danger pull-right">Alle Spieler entfernen</button>
+        </h1>
+
+        <h2>
+            <p ng-repeat="(pIndex, player) in players">
+                {{ player}} <button ng-click="playerCtrl.removePlayer(pIndex)" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></button>
+            </p>
+            <p>
+                {{ playerCtrl.newplayer}}
+            </p>
+        </h2>
+    </div>
 </div>
-</form>
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline" name="playerForm" ng-submit="playerCtrl.addPlayer()">
+            <div class="form-group">  
+                <input ng-model="playerCtrl.newplayer" type="text" class="form-control">
+                <input type="submit" value="Hinzufügen" class="form-control">
+            </div>
+        </form>
+    </div>
+</div>
 <hr>
-<a href="#game" class="btn btn-block btn-primary">Start Game</a>
+<a href="#game" class="btn btn-block btn-default" ng-click="playerCtrl.newGame()" ng-show="playerCtrl.hasPlayers()">Neues Spiel starten</a>
+<a href="#game" class="btn btn-block btn-primary" ng-show="playerCtrl.hasActiveRules() && playerCtrl.hasPlayers()">Spiel fortsetzen</a>

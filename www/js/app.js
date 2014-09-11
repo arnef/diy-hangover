@@ -59,10 +59,17 @@
             _self.game.next();
         };
 
+
         _self.showRules = function() {
             $('#rulesModal').modal('toggle');
         };
-        
+
+        _self.showTooltip = function() {
+            if (_self.game.currentAction.hasTooltip()) {
+                $('#myModal').modal('toggle');
+            }
+        };
+
         $scope.getActions();
 
     });
@@ -83,6 +90,23 @@
             $scope.players.splice(index, 1);
         };
 
+
+        _self.removePlayers = function() {
+            $scope.players.length = 0;
+        };
+
+        _self.hasPlayers = function() {
+            return $scope.players.length > 0;
+        };
+
+        _self.hasActiveRules = function() {
+            return $scope.activeRules.length > 0;
+        };
+
+        _self.newGame = function() {
+            console.log('new game');
+            $scope.activeRules.length = 0;
+        };
 
     });
 

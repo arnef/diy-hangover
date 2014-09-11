@@ -23,6 +23,9 @@
                 <h4 class="modal-title">Aktive Regeln</h4>
             </div>
             <div class="modal-body">
+                <div ng-hide="gameCtrl.hasActiveRules()">
+                    Es sind keine Regeln aktiv!
+                </div>
                 <div ng-repeat="rule in gameCtrl.game.activeRules">
                     {{ rule.name}}
                     <span ng-show="rule.withPlayer">{{ rule.user}}</span>
@@ -36,11 +39,10 @@
 </div><!-- /.modal -->
 
 <div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()" w-mousetrap="{right: gameCtrl.nextAction, n:gameCtrl.nextAction, r: gameCtrl.showRules, ?: gameCtrl.showTooltip}">
-    <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right" ng-show="gameCtrl.game.currentAction.hasTooltip()">?</button></p>
+    <p><a data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right" ng-show="gameCtrl.game.currentAction.hasTooltip()">?</a></p>
     <h2 style="text-align: left">{{ gameCtrl.game.getCurrentPlayer()}}</h2>
 
     <p class="lead">{{ gameCtrl.game.currentAction.name}}</p>
-    <p class="visible-md"><button class="btn btn-lg btn-default" ng-click="gameCtrl.nextAction()"><u>N</u>ext</button></p>
-
+    <p class="hidden-xs"><button class="btn btn-block btn-lg btn-default" id="nextBtn" ng-click="gameCtrl.nextAction()"><u>N</u>ächste Aktion</button></p>
 </div>
-<button data-toggle="modal" data-target="#rulesModal" class="btn btn-default">Aktive <u>R</u>egeln</button>
+<a data-toggle="modal" data-target="#rulesModal" class="btn btn-block btn-default" id="activeRulesBtn">Aktive <u>R</u>egeln</a>

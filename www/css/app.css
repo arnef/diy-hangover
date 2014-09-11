@@ -1,4 +1,30 @@
 .container-fluid {
   max-width: 768px; }
 
+.jumbotron {
+  position: absolute;
+  top: 70px;
+  bottom: 30px;
+  max-width: 768px;
+  width: 100%; }
+
+#activeRulesBtn {
+  position: absolute;
+  bottom: 15px;
+  max-width: 768px; }
+
+.lead {
+  min-height: 80%; }
+
+@media (max-width: 798px) {
+  .jumbotron {
+    right: 15px;
+    left: 15px;
+    width: auto; }
+
+  #activeRulesBtn {
+    right: 15px;
+    left: 15px;
+    width: auto; } }
+
 /*# sourceMappingURL=app.css.map */

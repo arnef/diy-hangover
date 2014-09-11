@@ -64,6 +64,10 @@
             $('#rulesModal').modal('toggle');
         };
 
+        _self.hasActiveRules = function() {
+            return $scope.activeRules.length > 0;
+        };
+
         _self.showTooltip = function() {
             if (_self.game.currentAction.hasTooltip()) {
                 $('#myModal').modal('toggle');

@@ -27,8 +27,8 @@
                     Es sind keine Regeln aktiv!
                 </div>
                 <div ng-repeat="rule in gameCtrl.game.activeRules">
+                    <span ng-show="rule.withPlayer">{{ rule.user}} ist </span>
                     {{ rule.name}}
-                    <span ng-show="rule.withPlayer">{{ rule.user}}</span>
                 </div>
             </div>
             <div class="modal-footer">

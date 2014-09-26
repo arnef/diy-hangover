@@ -38,6 +38,7 @@
         _self.actions10 = [];
         _self.game = null;
 
+        _self.newrule = null;
 
         $scope.setActions = function (actions70, actions20, actions10) {
             _self.actions70 = actions70;
@@ -62,6 +63,17 @@
             _self.game.next();
         };
 
+        _self.showCreateRuleButton = function() {
+            return _self.game.currentAction.type === 'CustomRule';
+        };
+
+        _self.createRule = function() {
+            var rule = new Rule(false);
+            rule.name = _self.newrule;
+            _self.game.createRule(rule);
+            _self.newrule = null;
+            $('#createRule').modal('hide');
+        };
 
         _self.showRules = function () {
             $('#rulesModal').modal('toggle');

@@ -16,13 +16,14 @@ function Parser()
         $(xml).find(wahr).find("action").each(function(idx, a) {
                 if ($(a).attr("rule")) {
                 var rule = new Rule($(a).attr("rule") === "withPlayer");
+
                 rule.name = $(a).find("name").text();
                 rule.tooltip = $(a).find("tooltip").text();
                 array.push(rule);
             }
             else
             {
-                var action = new Action();
+                var action = new Action($(a).attr("customRule") === "true");
                 action.name = $(a).find("name").text();
                 action.tooltip = $(a).find("tooltip").text();
                 array.push(action);

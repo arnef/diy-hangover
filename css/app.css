@@ -1,17 +1,15 @@
-body {
-  padding-top: 70px; }
-
 .container-fluid {
   max-width: 768px; }
 
 .jumbotron {
+  z-index: -20;
   position: absolute;
   top: 70px;
   bottom: 45px;
   max-width: 768px;
   width: 100%; }
 
-.buttomBtn {
+#activeRulesBtn {
   position: absolute;
   bottom: 15px;
   max-width: 768px; }

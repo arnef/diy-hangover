@@ -2,8 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">Info</h4>
             </div>
             <div class="modal-body">
@@ -12,18 +11,15 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 <div class="modal fade" id="rulesModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">Aktive Regeln</h4>
             </div>
             <div class="modal-body">
@@ -31,50 +27,23 @@
                     Es sind keine Regeln aktiv!
                 </div>
                 <div ng-repeat="rule in gameCtrl.game.activeRules">
-                    <span ng-show="rule.withPlayer">{{ rule.user}} ist </span>
                     {{ rule.name}}
+                    <span ng-show="rule.withPlayer">{{ rule.user}}</span>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="createRule" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title">Erstelle eine Regel!</h4>
-            </div>
-            <div class="modal-body">
-                <textarea class="form-control" ng-model="gameCtrl.newrule"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" ng-click="gameCtrl.createRule()">erstellen</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
+<div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()" w-mousetrap="{space: gameCtrl.nextAction, right: gameCtrl.nextAction, r: gameCtrl.showRules, ?: gameCtrl.showTooltip}">
+    <div id="action">
+        <p><a data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right" ng-show="gameCtrl.game.currentAction.hasTooltip()">?</a></p>
+        <h2 style="text-align: left">{{ gameCtrl.game.getCurrentPlayer()}}</h2>
+
+        <p class="lead">{{ gameCtrl.game.currentAction.name}}</p>
     </div>
-    <!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div class="jumbotron" ng-swipe-left="gameCtrl.nextAction()"
-     w-mousetrap="{right: gameCtrl.nextAction, n:gameCtrl.nextAction, r: gameCtrl.showRules, ?: gameCtrl.showTooltip}">
-    <p><a data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right"
-          ng-show="gameCtrl.game.currentAction.hasTooltip()">?</a></p>
-
-    <h2 style="text-align: left">{{ gameCtrl.game.getCurrentPlayer()}}</h2>
-
-    <p class="lead">{{ gameCtrl.game.currentAction.name}}</p>
 </div>
-<a data-toggle="modal" data-target="#createRule" class="btn btn-block btn-success buttomBtn"
-   ng-show="gameCtrl.showCreateRuleButton()" >Erstellen</a>
-<a data-toggle="modal" data-target="#rulesModal" class="btn btn-block btn-default buttomBtn"
-   ng-hide="gameCtrl.showCreateRuleButton()">Aktive <u>R</u>egeln</a>
+<a data-toggle="modal" data-target="#rulesModal" class="btn btn-block btn-default" id="activeRulesBtn">Aktive <u>R</u>egeln</a>

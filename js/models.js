@@ -48,14 +48,6 @@ function Game(users, actions70, actions20, actions10, activeRules) {
     _self.currentPlayer = -1;
     _self.currentAction = null;
 
-    (function () {
-        var action = new Action();
-        action.type = 'CustomRule';
-        action.name = 'Erstelle eine Regel!';
-        action.tooltip = 'Der Aktive Spieler darf eine Regel erstellen, bei deren nichteinhaltung getrunken werden muss. Oder eine von einem Spieler erstellte Regel darf entfernt werden.';
-        _self.actions20.push(action);
-    })();
-
     /**
      * will choose the next action randomly and set the next player
      * 
@@ -78,10 +70,6 @@ function Game(users, actions70, actions20, actions10, activeRules) {
         }
 
         _self.currentPlayer = (++_self.currentPlayer) % (_self.users.length);
-        if (_self.currentAction.type == 'CustomRule') {
-            console.log('custom rule');
-            //TODO dialog for custom rule
-        }
         if (_self.currentAction.type === 'Rule') {
             var index = _self.isRuleActive(_self.currentAction);
             if (index === -1) {
@@ -138,11 +126,6 @@ function Game(users, actions70, actions20, actions10, activeRules) {
         else {
             _self.activeRules.splice(index,1);
         }
-    };
-
-    _self.createRule = function (rule) {
-        _self.actions20.push(rule);
-        _self.addRule(rule);
     };
 
     /**

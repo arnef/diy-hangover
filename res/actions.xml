@@ -50,7 +50,7 @@
             <tooltip></tooltip>
         </action>
         <action>
-            <name>Das Geschlecht, welches am wenigsten vertreten ist, trinkt!</name>
+            <name>Das Geschlecht das am wenigsten vertreten ist, trinkt!</name>
             <tooltip></tooltip>
         </action>
         <action>
@@ -99,6 +99,10 @@
         <action rule="withoutPlayer">
             <name>Kein 'der', 'die', 'das' mehr :)</name>
             <tooltip>Beim benutzen eines Artikels muss der Spieler trinken.</tooltip>
+        </action>
+        <action>
+            <name>Erstelle eine Regel!</name>
+            <tooltip>Der Aktive Spieler darf eine Regel erstellen, bei deren nichteinhaltung getrunken werden muss. Oder eine von einem Spieler erstellte Regel darf entfernt werden.</tooltip>
         </action>
         <action rule="withoutPlayer">
             <name>Es darf nicht mehr das Wort 'trinken' benutzt werden!</name>

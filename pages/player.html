@@ -5,12 +5,10 @@
             Spieler
             <button ng-show="playerCtrl.hasPlayers()" ng-click="playerCtrl.removePlayers()" class="btn btn-danger pull-right">Alle Spieler entfernen</button>
         </h1>
-        <span class="clearfix"></span>
+
         <h2>
             <p ng-repeat="(pIndex, player) in players">
                 {{ player}} <button ng-click="playerCtrl.removePlayer(pIndex)" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></button>
-                <span class="clearfix"></span>
-
             </p>
             <p>
                 {{ playerCtrl.newplayer}}
